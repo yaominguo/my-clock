@@ -1,4 +1,4 @@
-import init, { get_time } from './my_clock.js';
+import init, { set_clock } from './my_clock.js';
 
 (function () {
   var lastTime = 0;
@@ -27,22 +27,10 @@ import init, { get_time } from './my_clock.js';
   }
 }())
 
-function setClock() {
-  var hours = get_time('%H'),
-    minutes = get_time('%M'),
-    clock = document.querySelector('#clock');
-
-  clock.innerText = `${hours} : ${minutes}`;
-}
-
-function render() {
-  setClock()
-  window.requestAnimationFrame(render);
-}
-
 async function run() {
   await init();
-  render();
+  set_clock('#clock')
+
 }
 
 run();
