@@ -1,0 +1,12 @@
+{
+  "name": "my-clock",
+  "version": "0.1.0",
+  "files": [
+    "my_clock_bg.wasm",
+    "my_clock.js",
+    "my_clock.d.ts"
+  ],
+  "module": "my_clock.js",
+  "types": "my_clock.d.ts",
+  "sideEffects": false
+}

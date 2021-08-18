@@ -1,2 +1,4 @@
+/dist
+/pkg
 /target
 Cargo.lock
