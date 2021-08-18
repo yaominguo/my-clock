@@ -2,24 +2,10 @@ use chrono::{DateTime, Local};
 use std::{cell::RefCell, rc::Rc};
 use wasm_bindgen::{prelude::*, JsCast};
 
-fn get_time(fmt: &str) -> String {
+#[wasm_bindgen]
+pub fn get_time(fmt: &str) -> String {
     let time: DateTime<Local> = Local::now();
     time.format(fmt).to_string()
-}
-fn window() -> web_sys::Window {
-    web_sys::window().expect("Error: 无法访问到window对象！")
-}
-
-fn document() -> web_sys::Document {
-    window()
-        .document()
-        .expect("Error: window中未发现document对象")
-}
-
-fn request_animation_frame(f: &Closure<dyn FnMut()>) {
-    window()
-        .request_animation_frame(f.as_ref().unchecked_ref())
-        .expect("Error: window中未发现requestAnimationFrame方法！");
 }
 
 #[wasm_bindgen]
@@ -41,4 +27,20 @@ pub fn set_clock(el: &str) -> Result<(), JsValue> {
     request_animation_frame(g.borrow().as_ref().unwrap());
 
     Ok(())
+}
+
+fn window() -> web_sys::Window {
+    web_sys::window().expect("Error: 无法访问到window对象！")
+}
+
+fn document() -> web_sys::Document {
+    window()
+        .document()
+        .expect("Error: window中未发现document对象")
+}
+
+fn request_animation_frame(f: &Closure<dyn FnMut()>) {
+    window()
+        .request_animation_frame(f.as_ref().unchecked_ref())
+        .expect("Error: window中未发现requestAnimationFrame方法！");
 }
