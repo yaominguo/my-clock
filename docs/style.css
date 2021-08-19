@@ -1,14 +1,26 @@
-:root {
-  --perspective-val: 180px;
-  --duration: 0.6s;
+html {
+  font-size: 10vh;
 }
 
 body {
-  background: aliceblue;
+  --perspective-val: 6rem;
+  --duration: 0.6s;
+  --radius: 0.5rem;
+  --bg-color: aliceblue;
+  --clock-color: #000;
+  --em-color: #000;
+  --font-color: #fff;
+  background: var(--bg-color);
   height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+body.dark {
+  --bg-color: #000;
+  --clock-color: #111;
+  --font-color: #ccc;
+  --em-color: #ccc;
 }
 
 #clock {
@@ -17,11 +29,11 @@ body {
 
 #clock em {
   display: inline-block;
-  line-height: 92px;
-  font-size: 66px;
+  line-height: 2.6rem;
+  font-size: 2rem;
   font-style: normal;
   vertical-align: top;
-  color: #000;
+  color: var(--em-color);
   animation: shine 2s ease-in-out reverse infinite;
 }
 
@@ -40,15 +52,14 @@ body {
 .flip {
   display: inline-block;
   position: relative;
-  width: 60px;
-  height: 100px;
-  line-height: 100px;
-  border: solid 1px #000;
-  border-radius: 10px;
-  background: #000;
-  font-size: 66px;
-  color: aliceblue;
-  box-shadow: 0 0 6px rgba(0, 0, 0, 0.5);
+  width: 3rem;
+  height: 3rem;
+  line-height: 3rem;
+  border-radius: var(--radius);
+  background: var(--clock-color);
+  font-size: 2rem;
+  color: var(--font-color);
+  box-shadow: 0 0 0.1rem rgba(0, 0, 0, 0.5);
   text-align: center;
   font-family: 'Helvetica Neue';
 }
@@ -59,7 +70,7 @@ body {
   position: absolute;
   left: 0;
   right: 0;
-  background: #000;
+  background: var(--clock-color);
   overflow: hidden;
   box-sizing: border-box;
 }
@@ -67,14 +78,14 @@ body {
 .flip .digital:before {
   top: 0;
   bottom: 50%;
-  border-radius: 10px 10px 0 0;
-  border-bottom: 1px solid #666;
+  border-radius: var(--radius) var(--radius) 0 0;
+  border-bottom: 0.01rem solid #666;
 }
 
 .flip .digital:after {
   top: 50%;
   bottom: 0;
-  border-radius: 0 0 10px 10px;
+  border-radius: 0 0 var(--radius) var(--radius);
   line-height: 0;
 }
 
@@ -146,7 +157,7 @@ body {
 .flip.down.go .front::before {
   transform-origin: 50% 100%;
   animation: frontFlipDown var(--duration) ease-in-out both;
-  box-shadow: 0 -2px 6px rgba(255, 255, 255, 0.3);
+  box-shadow: 0 0.06rem 0 rgba(0, 0, 0, 0.3);
   backface-visibility: hidden;
 }
 
