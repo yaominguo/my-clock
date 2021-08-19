@@ -15,12 +15,21 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: all 0.3s ease-out;
 }
 body.dark {
   --bg-color: #000;
   --clock-color: #111;
   --font-color: #ccc;
   --em-color: #ccc;
+}
+
+#btn {
+  position: absolute;
+  top: 0.3rem;
+  right: 0.3rem;
+  width: 0.4rem;
+  cursor: pointer;
 }
 
 #clock {
