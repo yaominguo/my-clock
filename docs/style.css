@@ -24,10 +24,17 @@ body.dark {
   --em-color: #ccc;
 }
 
-#theme {
+#themeBtn {
   position: absolute;
   top: 0.3rem;
   right: 0.3rem;
+  width: 0.4rem;
+  cursor: pointer;
+}
+#screenBtn {
+  position: absolute;
+  top: 0.3rem;
+  right: 1rem;
   width: 0.4rem;
   cursor: pointer;
 }
