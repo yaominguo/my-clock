@@ -37,21 +37,21 @@ async function start() {
     var type = this.getAttribute('src')
     var screen = screenBtn.getAttribute('src')
 
-    if (type === './moon.svg') {
+    if (type === './images/moon.svg') {
       document.body.className = 'dark'
-      this.setAttribute('src', './sun.svg')
-      if (screen === './full.svg') {
-        screenBtn.setAttribute('src', './full-dark.svg')
-      } else if (screen === './exit.svg') {
-        screenBtn.setAttribute('src', './exit-dark.svg')
+      this.setAttribute('src', './images/sun.svg')
+      if (screen === './images/full.svg') {
+        screenBtn.setAttribute('src', './images/full-dark.svg')
+      } else if (screen === './images/exit.svg') {
+        screenBtn.setAttribute('src', './images/exit-dark.svg')
       }
     } else {
       document.body.className = ''
-      this.setAttribute('src', './moon.svg')
-      if (screen === './full-dark.svg') {
-        screenBtn.setAttribute('src', './full.svg')
-      } else if (screen === './exit-dark.svg') {
-        screenBtn.setAttribute('src', './exit.svg')
+      this.setAttribute('src', './images/moon.svg')
+      if (screen === './images/full-dark.svg') {
+        screenBtn.setAttribute('src', './images/full.svg')
+      } else if (screen === './images/exit-dark.svg') {
+        screenBtn.setAttribute('src', './images/exit.svg')
       }
     }
   })
@@ -60,20 +60,20 @@ async function start() {
     var type = this.getAttribute('src')
     var className = document.body.className
     if (className === 'dark') {
-      if (type === './full-dark.svg') {
+      if (type === './images/full-dark.svg') {
         document.documentElement && document.documentElement.requestFullscreen()
-        this.setAttribute('src', './exit-dark.svg')
+        this.setAttribute('src', './images/exit-dark.svg')
       } else {
         document.exitFullscreen && document.exitFullscreen()
-        this.setAttribute('src', './full-dark.svg')
+        this.setAttribute('src', './images/full-dark.svg')
       }
     } else {
-      if (type === './full.svg') {
+      if (type === './images/full.svg') {
         document.documentElement && document.documentElement.requestFullscreen()
-        this.setAttribute('src', './exit.svg')
+        this.setAttribute('src', './images/exit.svg')
       } else {
         document.exitFullscreen && document.exitFullscreen()
-        this.setAttribute('src', './full.svg')
+        this.setAttribute('src', './images/full.svg')
       }
     }
   })

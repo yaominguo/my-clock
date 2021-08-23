@@ -1,14 +1,7 @@
 mod util;
-use chrono::{DateTime, Local};
+use crate::util::{document, flipper::Flipper, get_time, request_animation_frame};
 use std::{cell::RefCell, rc::Rc};
-use util::{document, flipper::Flipper, window};
-use wasm_bindgen::{prelude::*, JsCast};
-
-#[wasm_bindgen]
-pub fn get_time(fmt: &str) -> String {
-    let time: DateTime<Local> = Local::now();
-    time.format(fmt).to_string()
-}
+use wasm_bindgen::prelude::*;
 
 #[wasm_bindgen]
 pub fn run() -> Result<(), JsValue> {
@@ -40,10 +33,4 @@ pub fn run() -> Result<(), JsValue> {
     request_animation_frame(g.borrow().as_ref().unwrap());
 
     Ok(())
-}
-
-fn request_animation_frame(f: &Closure<dyn FnMut()>) {
-    window()
-        .request_animation_frame(f.as_ref().unchecked_ref())
-        .expect("Error: window中未发现requestAnimationFrame方法！");
 }
