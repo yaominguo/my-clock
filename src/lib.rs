@@ -16,13 +16,10 @@ pub fn run() -> Result<(), JsValue> {
     let flips = document()
         .query_selector_all(".flip .inner")
         .expect("Error: document中未发现 .flip 元素！");
-    let length = flips.length();
-    let mut index = 0;
-    while index < length {
+    for i in 0..flips.length() {
         flippers.push(Rc::new(Flipper::new(
-            flips.get(index).unwrap().parent_element().unwrap(),
+            flips.get(i).unwrap().parent_element().unwrap(),
         )));
-        index = index + 1;
     }
 
     let f = Rc::new(RefCell::new(None));
@@ -30,14 +27,11 @@ pub fn run() -> Result<(), JsValue> {
 
     *g.borrow_mut() = Some(Closure::wrap(Box::new(move || {
         let time = get_time("%H%M");
-        for (index, flipper) in flippers.iter().enumerate() {
+        for (i, flipper) in flippers.iter().enumerate() {
             let front_text = *flipper.front_text.borrow();
-            if front_text != time[index..index + 1].parse::<u8>().unwrap() {
-                Flipper::flip(
-                    flipper,
-                    front_text,
-                    time[index..index + 1].parse::<u8>().unwrap(),
-                );
+            let back_text = time[i..i + 1].parse::<u8>().unwrap();
+            if front_text != back_text {
+                Flipper::flip(flipper, front_text, back_text);
             }
         }
         request_animation_frame(f.borrow().as_ref().unwrap());

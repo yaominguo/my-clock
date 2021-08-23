@@ -1,5 +1,5 @@
 html {
-  font-size: 10vh;
+  font-size: 5vw;
 }
 
 body {
@@ -19,7 +19,7 @@ body {
 }
 body.dark {
   --bg-color: #000;
-  --clock-color: #111;
+  --clock-color: #18181c;
   --font-color: #ccc;
   --em-color: #ccc;
 }
@@ -51,6 +51,18 @@ body.dark {
   vertical-align: top;
   color: var(--em-color);
   animation: shine 2s ease-in-out reverse infinite;
+}
+
+@-webkit-keyframes shine {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 @keyframes shine {
@@ -95,7 +107,7 @@ body.dark {
   top: 0;
   bottom: 50%;
   border-radius: var(--radius) var(--radius) 0 0;
-  border-bottom: 0.01rem solid #666;
+  border-bottom: 0.02rem solid rgba(255, 255, 255, 0.3);
 }
 
 .flip .digital:after {
@@ -152,7 +164,7 @@ body.dark {
 
 .flip .number9:before,
 .flip .number9:after {
-  content: '2';
+  content: '9';
 }
 
 .flip.down .front:before {
@@ -172,13 +184,28 @@ body.dark {
 
 .flip.down.go .front::before {
   transform-origin: 50% 100%;
+  -webkit-animation: frontFlipDown var(--duration) ease-in-out both;
   animation: frontFlipDown var(--duration) ease-in-out both;
   box-shadow: 0 0.06rem 0 rgba(0, 0, 0, 0.3);
+  -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
 }
 
 .flip.down.go .back:after {
+  -webkit-animation: backFlipDown var(--duration) ease-in-out both;
   animation: backFlipDown var(--duration) ease-in-out both;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+@-webkit-keyframes frontFlipDown {
+  from {
+    transform: perspective(var(--perspective-val)) rotateX(0deg);
+  }
+
+  to {
+    transform: perspective(var(--perspective-val)) rotateX(-180deg);
+  }
 }
 
 @keyframes frontFlipDown {
@@ -188,6 +215,16 @@ body.dark {
 
   to {
     transform: perspective(var(--perspective-val)) rotateX(-180deg);
+  }
+}
+
+@-webkit-keyframes backFlipDown {
+  from {
+    transform: perspective(var(--perspective-val)) rotateX(180deg);
+  }
+
+  to {
+    transform: perspective(var(--perspective-val)) rotateX(0deg);
   }
 }
 
