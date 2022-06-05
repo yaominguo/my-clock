@@ -1,55 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
+<!DOCTYPE html><html lang="en"><head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MyClock</title>
-  <link href="https://cdn.bootcdn.net/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet">
-  <link href="./style.css" rel="stylesheet">
-</head>
+  <link rel="stylesheet" href="./index.css">
+
+<link rel="preload" href="/my_clock-c19cda208656041_bg.wasm" as="fetch" type="application/wasm" crossorigin="">
+<link rel="modulepreload" href="/my_clock-c19cda208656041.js"></head>
 
 <body>
-  <img id="themeBtn" src="./images/moon.svg" />
-  <img id="screenBtn" src="./images/full.svg" />
-  <div id="clock">
-    <div class="flip down">
-      <div class="inner">
-        <div class="digital front number0"></div>
-        <div class="digital back number1"></div>
-      </div>
-    </div>
-    <div class="flip down">
-      <div class="inner">
-        <div class="digital front number0"></div>
-        <div class="digital back number1"></div>
-      </div>
-    </div>
-    <em>:</em>
-    <div class="flip down">
-      <div class="inner">
-        <div class="digital front number0"></div>
-        <div class="digital back number1"></div>
-      </div>
-    </div>
-    <div class="flip down">
-      <div class="inner">
-        <div class="digital front number0"></div>
-        <div class="digital back number1"></div>
-      </div>
-    </div>
-    <!-- <em>:</em>
-    <div class="flip down">
-      <div class="digital front number0"></div>
-      <div class="digital back number1"></div>
-    </div>
-    <div class="flip down">
-      <div class="digital front number0"></div>
-      <div class="digital back number1"></div>
-    </div> -->
-  </div>
-  <script type="module" src="./entry.js"></script>
-</body>
 
-</html>
+
+
+<script type="module">import init from '/my_clock-c19cda208656041.js';init('/my_clock-c19cda208656041_bg.wasm');</script></body></html>
