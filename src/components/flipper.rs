@@ -1,9 +1,9 @@
+use my_clock::set_timeout;
 use std::ops::Deref;
-
 use sycamore::prelude::RcSignal;
-use wasm_bindgen::{prelude::*, JsCast};
+use wasm_bindgen::prelude::*;
 
-#[derive(Default, Debug, PartialEq, Clone)]
+#[derive(Default, PartialEq, Clone)]
 pub struct Flipper {
     pub front: RcSignal<u32>,
     pub back: RcSignal<u32>,
@@ -22,7 +22,6 @@ impl Flipper {
     }
 }
 
-#[derive(Debug)]
 pub struct Flippers(Vec<Flipper>);
 
 impl Deref for Flippers {
@@ -41,6 +40,8 @@ impl Flippers {
             Default::default(),
         ])
     }
+
+    // 判断时间数字与当前不一样则flip
     pub fn check_time(&self, time: &str) {
         for (i, c) in time.chars().enumerate() {
             let front = self[i].front.get();
@@ -50,6 +51,7 @@ impl Flippers {
             }
         }
     }
+
     pub fn flip(&self, index: usize, front: u32, back: u32) {
         let cur = self[index].clone();
         if *cur.flipping.get() {
@@ -63,19 +65,6 @@ impl Flippers {
             cur.set_flipping(false);
             cur.set_front(back);
         }) as Box<dyn Fn()>);
-        window()
-            .set_timeout_with_callback_and_timeout_and_arguments_0(cb.as_ref().unchecked_ref(), 600)
-            .unwrap();
-        cb.forget();
+        set_timeout(cb, 600);
     }
-}
-
-fn window() -> web_sys::Window {
-    web_sys::window().expect("no global `window` exists")
-}
-
-pub fn request_animation_frame(cb: &Closure<dyn Fn()>) {
-    window()
-        .request_animation_frame(cb.as_ref().unchecked_ref())
-        .expect("no `request_animation_frame` method in global window");
 }

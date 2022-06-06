@@ -196,7 +196,11 @@ function makeClosure(arg0, arg1, dtor, f) {
     return real;
 }
 function __wbg_adapter_16(arg0, arg1) {
-    wasm._dyn_core__ops__function__Fn_____Output___R_as_wasm_bindgen__closure__WasmClosure___describe__invoke__h4189e75fe18b80ad(arg0, arg1);
+    wasm._dyn_core__ops__function__Fn_____Output___R_as_wasm_bindgen__closure__WasmClosure___describe__invoke__h96d44e85200e0ae8(arg0, arg1);
+}
+
+function __wbg_adapter_19(arg0, arg1) {
+    wasm._dyn_core__ops__function__Fn_____Output___R_as_wasm_bindgen__closure__WasmClosure___describe__invoke__h5ed185f18cf732ea(arg0, arg1);
 }
 
 function getCachedStringFromWasm0(ptr, len) {
@@ -252,21 +256,12 @@ async function load(module, imports) {
 
 async function init(input) {
     if (typeof input === 'undefined') {
-        input = new URL('my_clock-c19cda208656041_bg.wasm', import.meta.url);
+        input = new URL('my_clock-5016693fc1782df6_bg.wasm', import.meta.url);
     }
     const imports = {};
     imports.wbg = {};
     imports.wbg.__wbindgen_object_drop_ref = function(arg0) {
         takeObject(arg0);
-    };
-    imports.wbg.__wbindgen_cb_drop = function(arg0) {
-        const obj = takeObject(arg0).original;
-        if (obj.cnt-- == 1) {
-            obj.a = 0;
-            return true;
-        }
-        const ret = false;
-        return ret;
     };
     imports.wbg.__wbindgen_object_clone_ref = function(arg0) {
         const ret = getObject(arg0);
@@ -327,6 +322,15 @@ imports.wbg.__wbg_setclassName_e9c13ae08666408b = function() { return handleErro
 imports.wbg.__wbindgen_string_new = function(arg0, arg1) {
     const ret = getStringFromWasm0(arg0, arg1);
     return addHeapObject(ret);
+};
+imports.wbg.__wbindgen_cb_drop = function(arg0) {
+    const obj = takeObject(arg0).original;
+    if (obj.cnt-- == 1) {
+        obj.a = 0;
+        return true;
+    }
+    const ret = false;
+    return ret;
 };
 imports.wbg.__wbg_instanceof_Window_0e6c0f1096d66c3c = function(arg0) {
     const ret = getObject(arg0) instanceof Window;
@@ -441,8 +445,12 @@ imports.wbg.__wbindgen_debug_string = function(arg0, arg1) {
 imports.wbg.__wbindgen_throw = function(arg0, arg1) {
     throw new Error(getStringFromWasm0(arg0, arg1));
 };
-imports.wbg.__wbindgen_closure_wrapper86 = function(arg0, arg1, arg2) {
-    const ret = makeClosure(arg0, arg1, 15, __wbg_adapter_16);
+imports.wbg.__wbindgen_closure_wrapper150 = function(arg0, arg1, arg2) {
+    const ret = makeClosure(arg0, arg1, 50, __wbg_adapter_16);
+    return addHeapObject(ret);
+};
+imports.wbg.__wbindgen_closure_wrapper567 = function(arg0, arg1, arg2) {
+    const ret = makeClosure(arg0, arg1, 220, __wbg_adapter_19);
     return addHeapObject(ret);
 };
 
