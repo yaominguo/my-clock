@@ -28,6 +28,15 @@ pub fn set_timeout(cb: Closure<dyn Fn()>, duration: i32) {
     cb.forget();
 }
 
+pub fn document() -> web_sys::Document {
+    window()
+        .document()
+        .expect("no `document` available in global window`")
+}
+pub fn navigator() -> web_sys::Navigator {
+    window().navigator()
+}
+
 fn request_animation_frame(cb: &Closure<dyn Fn()>) {
     window()
         .request_animation_frame(cb.as_ref().unchecked_ref())

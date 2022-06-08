@@ -31,7 +31,7 @@ body.dark {
   --em-color: #ccc;
 }
 
-#themeBtn {
+.theme-btn {
   position: absolute;
   top: 0.3rem;
   right: 0.3rem;
@@ -39,12 +39,16 @@ body.dark {
   cursor: pointer;
 }
 
-#screenBtn {
+.screen-btn {
   position: absolute;
   top: 0.3rem;
   right: 1rem;
   width: 0.4rem;
   cursor: pointer;
+}
+
+.screen-btn.hidden {
+  display: none;
 }
 
 .clock {
