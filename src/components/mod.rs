@@ -1,6 +1,8 @@
 mod btns;
 mod clock;
 mod flipper;
+mod image;
+
 use btns::Btns;
 use clock::Clock;
 use sycamore::prelude::*;

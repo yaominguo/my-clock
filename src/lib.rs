@@ -33,7 +33,24 @@ pub fn document() -> web_sys::Document {
         .document()
         .expect("no `document` available in global window`")
 }
-pub fn navigator() -> web_sys::Navigator {
+
+pub fn is_in_chrome() -> bool {
+    navigator().user_agent().unwrap().contains("Chrome")
+}
+
+pub fn set_screen(is_full: bool) {
+    if is_full {
+        document()
+            .document_element()
+            .unwrap()
+            .request_fullscreen()
+            .unwrap();
+    } else {
+        document().exit_fullscreen();
+    }
+}
+
+fn navigator() -> web_sys::Navigator {
     window().navigator()
 }
 
