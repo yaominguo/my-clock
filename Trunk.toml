@@ -1,6 +1,6 @@
 [build]
 dist = "docs"
-public_url = "/"
+public_url = "./"
 
 [[hooks]]
 stage = "build"
